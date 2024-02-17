@@ -1,7 +1,8 @@
 const appLinks = {
-  Login: "/",
+  Landing: "/",
+  Login: "/sign-in",
   Register: "/sign-up",
-  Dashboard: "/dashboard",
+  Dashboard: "/",
 };
 
-export {appLinks}
+export { appLinks };
