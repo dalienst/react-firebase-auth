@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { appLinks } from "./links";
 import { useAuth } from "../firebase/auth";
+import Navbar from "../layouts/Navbar";
 
 const Landing = React.lazy(() => import("../pages/Landing"));
 const Login = React.lazy(() => import("../pages/Login"));
@@ -22,6 +23,7 @@ function BaseRouter() {
             </>
           }
         >
+          <Navbar />
           <Routes>
             {authUser ? (
               <>

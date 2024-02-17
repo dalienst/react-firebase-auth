@@ -1,16 +1,13 @@
 import React from "react";
 import { useAuth } from "../firebase/auth";
-import { Link } from "react-router-dom";
 
 function Dashboard() {
-  const { authUser, signOut } = useAuth();
+  const { authUser } = useAuth();
   return (
     <>
-      <div className="container py-2">
+      <div className="container py-3">
+        <h6 className="text-secondary text-uppercase">Dashboard</h6>
         <h1 className="fw-bold">Welcome {authUser?.email}</h1>
-        <Link onClick={signOut} className="btn btn-outline-dark">
-          Logout
-        </Link>
       </div>
     </>
   );
