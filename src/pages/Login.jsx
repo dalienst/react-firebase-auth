@@ -76,7 +76,7 @@ function Login() {
             </Form>
           )}
         </Formik>
-        <button className="btn btn-outline-success" onClick={loginWithGoogle}>Login with Google</button>
+        {/* <button className="btn btn-outline-success" onClick={loginWithGoogle}>Login with Google</button> */}
       </div>
     </>
   );
