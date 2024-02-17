@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useAuth } from "../firebase/auth";
 
 function Dashboard() {
   const { authUser } = useAuth();
+  useEffect(() => {}, [authUser]);
   return (
     <>
       <div className="container py-3">

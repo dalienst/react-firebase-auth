@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useAuth } from "../firebase/auth";
 import { Link } from "react-router-dom";
 import { appLinks } from "../constants/links";
 
 function Navbar() {
   const { authUser, signOut } = useAuth();
+  useEffect(() => {}, [authUser]);
   return (
     <>
       <nav className="navbar sticky-top border-bottom bg-white mb-2">
