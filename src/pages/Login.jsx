@@ -1,6 +1,6 @@
 import React from "react";
 import { useAuth } from "../firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Field, Form, Formik } from "formik";
 import { toast } from "react-toastify";
 import { appLinks } from "../constants/links";
@@ -31,7 +31,6 @@ function Login() {
               toast.success("Login Successful");
               navigate(appLinks.Dashboard);
             } catch (error) {
-              console.log(error);
             }
           }}
         >
@@ -70,10 +69,14 @@ function Login() {
                   Login
                 </button>
               </div>
+
+              <div className="mb-3 text-center">
+                <Link to={appLinks.Register} className="fst-italic">Create an account</Link>
+              </div>
             </Form>
           )}
         </Formik>
-        <button onClick={loginWithGoogle}>Login with Google</button>
+        <button className="btn btn-outline-success" onClick={loginWithGoogle}>Login with Google</button>
       </div>
     </>
   );
