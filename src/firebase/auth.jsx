@@ -7,7 +7,6 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   GithubAuthProvider,
-  TwitterAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
 import { auth } from "./firebase";
@@ -44,13 +43,35 @@ export default function useFirebaseAuth() {
       clear();
     });
 
-  const login = async (email, password) => {
-    try {
-      
-    } catch (error) {
-      
-    }
-  }
+  const login = async ({email, password}) => {
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    authStateChanged(userCredential.user);
+  };
+
+  const signUp = async ({email, password}) => {
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    authStateChanged(userCredential.user);
+  };
+
+  const loginWithGoogle = async () => {
+    const provider = new GoogleAuthProvider();
+    const userCredential = await signInWithPopup(auth, provider);
+    authStateChanged(userCredential.user);
+  };
+
+  const loginWithGithub = async () => {
+    const provider = new GithubAuthProvider();
+    const userCredential = await signInWithPopup(auth, provider);
+    authStateChanged(userCredential.user);
+  };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, authStateChanged);
@@ -61,6 +82,10 @@ export default function useFirebaseAuth() {
     authUser,
     isLoading,
     signOut,
+    login,
+    signUp,
+    loginWithGoogle,
+    loginWithGithub,
   };
 }
 
