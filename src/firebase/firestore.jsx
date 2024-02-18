@@ -46,3 +46,17 @@ export async function getNotes(uid) {
   return allNotes;
 }
 
+export function updateNote(id, uid, date, locationName, title, note) {
+  setDoc(doc(db, NOTES_COLLECTION, id), {
+    uid,
+    date,
+    locationName,
+    title,
+    note,
+  });
+}
+
+
+export function deleteNote(id) {
+  deleteDoc(doc(db, NOTES_COLLECTION, id));
+}
